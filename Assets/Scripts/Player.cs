@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    public Transform bulletStartPos;
+    public GameObject bulletPrefab;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -62,6 +65,6 @@ public class Player : MonoBehaviour
     }
     void Shoot()
     {
-        Debug.Log("Shoot!");
+        Instantiate(bulletPrefab, bulletStartPos.position, Quaternion.identity);
     }
 }
