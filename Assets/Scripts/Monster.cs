@@ -1,10 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class Monster : MonoBehaviour
 {
+    public Slider slider;
+
     float speed;
     int shots = 0;
 
@@ -15,6 +18,8 @@ public class Monster : MonoBehaviour
     {
         scoreManager = FindObjectOfType<ScoreManager>();
         gameManager = FindObjectOfType<GameManager>();
+
+        slider.value = 1;
 
         if(gameManager.currentMode == Modes.Normal)
         {
@@ -36,6 +41,7 @@ public class Monster : MonoBehaviour
         if(collision.CompareTag("Bullet"))
         {
             shots++;
+            slider.value -= 0.2f;
             Destroy(collision.gameObject);
         }
         if (collision.CompareTag("Player"))
