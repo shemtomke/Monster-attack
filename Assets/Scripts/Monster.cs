@@ -16,7 +16,14 @@ public class Monster : MonoBehaviour
         scoreManager = FindObjectOfType<ScoreManager>();
         gameManager = FindObjectOfType<GameManager>();
 
-        speed = Random.Range(1.5f, 4);
+        if(gameManager.currentMode == Modes.Normal)
+        {
+            speed = Random.Range(1.2f, 2f);
+        }
+        else
+        {
+            speed = Random.Range(2f, 5);
+        }
     }
 
     private void Update()

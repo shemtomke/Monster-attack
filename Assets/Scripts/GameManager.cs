@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
+    public Modes currentMode;
+
     public bool isGameOver = false;
     public bool isStartGame = false;
 
@@ -13,9 +15,9 @@ public class GameManager : MonoBehaviour
 
     string saveGamesPlayed = "GAMESPLAYED";
 
-    private void Awake()
+    private void Update()
     {
-        
+        UpdateGamesPlayed();
     }
 
     #region Number of Games Played
@@ -25,13 +27,16 @@ public class GameManager : MonoBehaviour
     }
     public int GetNumberOfGames()
     {
-        return PlayerPrefs.GetInt(saveGamesPlayed, gamesPlayed);
+        return PlayerPrefs.GetInt(saveGamesPlayed);
     }
     void UpdateGamesPlayed()
     {
-        gamesPlayedText.text = "" + gamesPlayed;
+        gamesPlayed = GetNumberOfGames();
+        gamesPlayedText.text = "" + GetNumberOfGames();
     }
     #endregion
-
-
+}
+public enum Modes
+{
+    Normal, Hard
 }
