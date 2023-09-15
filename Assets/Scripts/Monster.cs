@@ -17,11 +17,11 @@ public class Monster : MonoBehaviour
         if(collision.CompareTag("Bullet"))
         {
             shots++;
+            Destroy(collision.gameObject);
         }
-
-        if(collision.CompareTag("Player"))
+        if (collision.CompareTag("Player"))
         {
-            Debug.Log("Game Over");
+            Debug.Log("Game Over Shooter");
         }
     }
     void Move()

@@ -4,14 +4,10 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    public Transform bulletStartPos;
-    public GameObject bulletPrefab;
+    public Transform bulletStartPosRight;
+    public Transform bulletStartPosLeft;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public GameObject bulletPrefab;
 
     // Update is called once per frame
     void Update()
@@ -65,6 +61,9 @@ public class Player : MonoBehaviour
     }
     void Shoot()
     {
-        Instantiate(bulletPrefab, bulletStartPos.position, Quaternion.identity);
+        if(transform.GetComponent<SpriteRenderer>().flipX)
+            Instantiate(bulletPrefab, bulletStartPosRight.position, Quaternion.identity);
+        else
+            Instantiate(bulletPrefab, bulletStartPosLeft.position, Quaternion.identity);
     }
 }
