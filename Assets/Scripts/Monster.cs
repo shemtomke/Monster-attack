@@ -1,11 +1,23 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Monster : MonoBehaviour
 {
-    public float speed;
+    float speed;
     int shots = 0;
+
+    ScoreManager scoreManager;
+    GameManager gameManager;
+
+    private void Awake()
+    {
+        scoreManager = FindObjectOfType<ScoreManager>();
+        gameManager = FindObjectOfType<GameManager>();
+
+        speed = Random.Range(1.5f, 4);
+    }
 
     private void Update()
     {
@@ -22,6 +34,8 @@ public class Monster : MonoBehaviour
         if (collision.CompareTag("Player"))
         {
             Debug.Log("Game Over Shooter");
+            gameManager.gamesPlayed++;
+            gameManager.SaveGamesPlayed(gameManager.gamesPlayed);
         }
     }
     void Move()
@@ -35,6 +49,7 @@ public class Monster : MonoBehaviour
     {
         if(shots >= 5)
         {
+            scoreManager.score++;
             Destroy(gameObject);
         }
     }
