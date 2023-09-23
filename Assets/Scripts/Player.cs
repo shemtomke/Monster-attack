@@ -8,11 +8,13 @@ public class Player : MonoBehaviour
     public Transform bulletStartPosLeft;
 
     public GameObject bulletPrefab;
+    public GameManager manager;
 
     // Update is called once per frame
     void Update()
     {
-        PlayerController();
+        if(!manager.isGameOver)
+            PlayerController();
     }
     void PlayerController()
     {

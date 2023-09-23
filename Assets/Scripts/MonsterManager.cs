@@ -9,15 +9,14 @@ public class MonsterManager : MonoBehaviour
     [Space(10)]
 
     public GameObject monsterPrefab;
+    public GameManager gameManager;
 
     float spawnIntervalLeft;
     float spawnIntervalRight;
 
     private GameObject leftMonster, rightMonster;
     private bool isSpawningFromFirstPos = true; // Flag to alternate spawn positions
-
-    // Start is called before the first frame update
-    void Start()
+    private void OnEnable()
     {
         spawnIntervalLeft = Random.Range(0, 1);
         spawnIntervalRight = Random.Range(0, 1);

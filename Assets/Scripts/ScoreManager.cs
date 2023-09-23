@@ -31,7 +31,7 @@ public class ScoreManager : MonoBehaviour
         }
 
         // Display the high score
-        bestScoreText.text += "" + highScore;
+        bestScoreText.text = "" + highScore;
     }
     // Save the high score to PlayerPrefs
     private void SaveHighScore()

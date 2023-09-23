@@ -34,7 +34,9 @@ public class Monster : MonoBehaviour
     private void Update()
     {
         Death();
-        Move();
+
+        if(!gameManager.isGameOver)
+            Move();
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -46,9 +48,9 @@ public class Monster : MonoBehaviour
         }
         if (collision.CompareTag("Player"))
         {
-            Debug.Log("Game Over Shooter");
             gameManager.gamesPlayed++;
             gameManager.SaveGamesPlayed(gameManager.gamesPlayed);
+            gameManager.isGameOver = true;
         }
     }
     void Move()
