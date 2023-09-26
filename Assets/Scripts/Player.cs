@@ -28,6 +28,12 @@ public class Player : MonoBehaviour
             {
                 // Turn left
                 transform.GetComponent<SpriteRenderer>().flipX = false;
+
+                // Fire a bullet when the screen is touched on the left side
+                if (touch.phase == TouchPhase.Began)
+                {
+                    Shoot();
+                }
             }
             else
             {
